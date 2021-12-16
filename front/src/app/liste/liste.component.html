@@ -14,20 +14,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>a</td>
-          <td>b</td>
-          <td>c</td>
-          <td>c</td>
-          <td>c</td>
+        <tr *ngFor="let facture of factures">
+          <td>{{ facture.id }}</td>
+          <td>{{ facture.montant }}</td>
+          <td>{{ facture.remise }}</td>
+          <td>{{ facture.date.substring(0, 10) }}</td>
+          <td>{{ facture.active ? "Oui" : "Non" }}</td>
 
           <td>
-            <button class="btn btn-danger">Delete</button>
-            <button class="btn btn-info" style="margin-left: 10px">
-              Update
+            <button (click)="updateFacture(facture.id)" class="btn btn-danger">
+              Supprimer
             </button>
-            <button class="btn btn-info" style="margin-left: 10px">
-              Details
+            <button
+              (click)="deleteFacture(facture.id)"
+              class="btn btn-info"
+              style="margin-left: 10px"
+            >
+              Modifier
             </button>
           </td>
         </tr>
