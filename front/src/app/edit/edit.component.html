@@ -1,18 +1,10 @@
 <h3>Modifier Facture</h3>
+<div>
+  <h4>Facture: {{ facture.id }}</h4>
+</div>
+
 <div style="width: 400px">
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">ID</label>
-      <input
-        type="number"
-        class="form-control"
-        id="ID"
-        required
-        [(ngModel)]="facture.id"
-        name="ID"
-      />
-    </div>
-
     <div class="form-group">
       <label for="name">Montant du facture</label>
       <input
@@ -66,8 +58,4 @@
       Submit
     </button>
   </form>
-</div>
-
-<div>
-  <h4>Id existe déjà</h4>
 </div>
