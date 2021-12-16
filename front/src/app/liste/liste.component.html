@@ -22,11 +22,11 @@
           <td>{{ facture.active ? "Oui" : "Non" }}</td>
 
           <td>
-            <button (click)="updateFacture(facture.id)" class="btn btn-danger">
+            <button (click)="deleteFacture(facture.id)" class="btn btn-danger">
               Supprimer
             </button>
             <button
-              (click)="deleteFacture(facture.id)"
+              (click)="updateFacture(facture.id)"
               class="btn btn-info"
               style="margin-left: 10px"
             >

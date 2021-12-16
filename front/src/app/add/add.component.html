@@ -1,1 +1,74 @@
-<p>add works!</p>
+<h3>Ajouter Facture</h3>
+<div [hidden]="submitted" style="width: 400px">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">ID</label>
+      <input
+        type="number"
+        class="form-control"
+        id="ID"
+        required
+        [(ngModel)]="facture.id"
+        name="ID"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Montant du facture</label>
+      <input
+        type="number"
+        class="form-control"
+        id="montant"
+        required
+        [(ngModel)]="facture.montant"
+        name="montant"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Montant du remise</label>
+      <input
+        type="number"
+        class="form-control"
+        id="remise"
+        required
+        [(ngModel)]="facture.remise"
+        name="remise"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        required
+        [(ngModel)]="facture.date"
+        name="date"
+      />
+    </div>
+
+    <div class="form-group" style="margin-top: 10px">
+      <label for="name">Active</label>
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="active"
+        required
+        checked
+        [(ngModel)]="facture.active"
+        name="active"
+      />
+    </div>
+
+    <button style="margin-top: 20px" type="submit" class="btn btn-success">
+      Submit
+    </button>
+  </form>
+</div>
+
+<div>
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 export class FactureServiceService {
   constructor(private http: HttpClient) {}
 
-  getDate() {
-    return this.http.get('api/factures');
-  }
-
   getFactures(id: number = -1): Observable<any> {
     if (id === -1) return this.http.get('api/factures');
     else return this.http.get(`api/factures/${id}`);
+  }
+
+  addFacture(facture: object): Observable<any> {
+    return this.http.post(`api/factures/`, facture);
   }
 }

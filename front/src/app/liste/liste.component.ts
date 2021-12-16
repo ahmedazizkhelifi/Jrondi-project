@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Facture } from '../facture';
 import { FactureServiceService } from '../facture-service.service';
 
@@ -8,7 +9,7 @@ import { FactureServiceService } from '../facture-service.service';
   styleUrls: ['./liste.component.css'],
 })
 export class ListeComponent implements OnInit {
-  constructor(private service: FactureServiceService) {}
+  constructor(private service: FactureServiceService, private router: Router) {}
   factures: any[] = [];
   ngOnInit(): void {
     this.getFactures();
@@ -28,6 +29,7 @@ export class ListeComponent implements OnInit {
   }
   updateFacture(id: number) {
     console.log(id);
+    this.router.navigate(['/edit']);
   }
 
   deleteFacture(id: number) {
