@@ -55,23 +55,28 @@ router.get("/factures", async (req, res) => {
 
 router.post("/factures", async (req, res) => {
   Factures.find({ id: req.body.id }).then((r) => {
-    if (r.length != 0) res.json("Facture exist!");
+    if (r.length != 0) {
+      res.status(404).json("Facture exist!");
+      return;
+    } else {
+      const facture = new Factures({
+        id: req.body.id,
+        montant: req.body.montant,
+        remise: req.body.remise,
+        date: req.body.date,
+        active: req.body.active,
+      });
+      try {
+        const result = /* await */ facture.save();
+        res.json(result);
+      } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+      }
+    }
   });
-  const facture = new Factures({
-    id: req.body.id,
-    montant: req.body.montant,
-    remise: req.body.remise,
-    date: req.body.date,
-    active: req.body.active,
-  });
+
   // check id not exist in document
-  try {
-    const result = await facture.save();
-    res.json(result);
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(500);
-  }
 });
 
 router.put("/factures/:id", async (req, res) => {
@@ -91,6 +96,14 @@ router.put("/factures/:id", async (req, res) => {
           },
           {
             upsert: false,
+            new: true,
+          },
+          (err, doc) => {
+            if (err) {
+              console.log("Something wrong when updating data!");
+            }
+
+            console.log(doc);
           },
         );
         return res.json("Changement done");
