@@ -25,7 +25,6 @@ export class AddComponent implements OnInit {
       this.facture = new Facture();
       this.gotoList();
     });
-    //addFacture
   }
   onSubmit() {
     this.submitted = true;

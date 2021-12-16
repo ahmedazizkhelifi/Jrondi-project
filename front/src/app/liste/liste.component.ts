@@ -18,9 +18,9 @@ export class ListeComponent implements OnInit {
   getFactures() {
     this.service.getFactures().subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
         this.factures = response;
-        console.log(this.factures);
+        //console.log(this.factures);
       },
       (err) => {
         console.log(err);
@@ -29,7 +29,7 @@ export class ListeComponent implements OnInit {
   }
   updateFacture(id: number) {
     console.log(id);
-    this.router.navigate(['/edit']);
+    this.router.navigate(['/edit', id]);
   }
 
   deleteFacture(id: number) {
