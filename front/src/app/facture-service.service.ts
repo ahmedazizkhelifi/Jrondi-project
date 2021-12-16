@@ -15,4 +15,8 @@ export class FactureServiceService {
   addFacture(facture: object): Observable<any> {
     return this.http.post(`api/factures/`, facture);
   }
+
+  deleteFacture(id: number): Observable<any> {
+    return this.http.delete(`api/factures/${id}`, { responseType: 'text' });
+  }
 }

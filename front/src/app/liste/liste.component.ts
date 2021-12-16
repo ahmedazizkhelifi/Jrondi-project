@@ -34,5 +34,15 @@ export class ListeComponent implements OnInit {
 
   deleteFacture(id: number) {
     console.log(id);
+    this.service.deleteFacture(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.factures = response;
+        this.getFactures();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
